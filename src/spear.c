@@ -1,4 +1,5 @@
 #include <stdio.h>
+//
 
 int n;
 int k;
@@ -11,7 +12,25 @@ int main(){
   for(i = 0; i < n; i++){
     scanf("%d", &A[i]);
   }
-
-
-  return 0;
+  int j = 0;
+  lb = 0;//作ることができる槍の長さの最小値
+  long long int x = A[0];
+  while(j < n){
+    j += 1;
+    x += A[j];
+    }
+    ub = (x / k)+1;//この値だと必ずk本の槍を作ることができない
+  while (ub - lb > 1){
+    int m = (lb + ub) / 2;
+    int i = 0;
+    int w =  0;
+    while (i < n){
+        w = w + (A[i]/ m);
+        i += 1;
+    }
+    if  (w >= k) lb = m;
+    else ub = m;
+    }
+printf("%d\n" ,lb);
+return 0;
 }
