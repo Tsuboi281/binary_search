@@ -14,12 +14,7 @@ int p(int A[100000],int n ,int k ,int m){
             if (A[y] > m){return 0;}
             else {
                 int w = A[y];
-                int z = 1;
-                while(z == 1){
-                    y += 1;
-                    w += A[y];
-                    if (w > m) z = 0;
-            }
+                do{y++; w+=A[y];}while(w <= m);
         }
     }
 }
@@ -29,24 +24,22 @@ return 1;
 
 int main(){
   int i, lb;
-  long long int ub;
+  int ub;
   scanf("%d%d", &n, &k);
   for(i = 0; i < n; i++){
     scanf("%d", &A[i]);
   }
   
-  int j = 0;
+  int j;
   lb = 0;
     
   ub = A[0];
-  while(j < n - k){
-    j += 1;
+  for(j = 0;j <= n - k ;j++){
     ub += A[j];
   }
   
   
-  while(j < n-1){
-    j += 1;
+  for( j = n - k + 1; j < n;j++){
     if (ub < A[j]) ub = A[j];
   }//ubとして条件を満たすものを一つを持ってくる
   
@@ -57,7 +50,7 @@ int main(){
     if (p(A,n,k,m)){ub = m;}
     else {lb = m;}
     }
-  printf("%lld\n" ,ub);
+  printf("%d\n" ,ub);
 
   return 0;
 }
