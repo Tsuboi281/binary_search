@@ -11,20 +11,18 @@ int main(){
   for(i = 0; i < n; i++){
     scanf("%d", &A[i]);
   }
-  int j = 0;
+  int j;
   lb = 0;
   ub = A[0];
-  while(j < n){
-    j += 1;
+  for(j = 1;j < n; j ++){
     if (ub < A[j]) ub = A[j];
     }//Aの要素の最大値はりんごバックに入れることができるリンゴの個数としてあり得るのでそれをubとしてとる
   while (ub - lb > 1){
     int m = (lb + ub) / 2;
-    int i = 0;
+    int l;
     int w =  0;
-    while (i < n){
-        w += ((A[i] -1)/ m) + 1;
-        i += 1;
+    for (l = 0; l < n; l++){
+        w += ((A[l] -1)/ m) + 1;
     }
     if  (w <= k) ub = m;
     else lb = m;
