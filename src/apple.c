@@ -1,5 +1,5 @@
 #include <stdio.h>
-
+//test
 int n;
 int k;
 int A[100000];
